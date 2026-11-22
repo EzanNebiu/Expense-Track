@@ -24,6 +24,7 @@ import type { RecurringFrequency } from '../types/RecurringFrequency';
 import type { TransactionType } from '../../transactions/types/TransactionType';
 import type { Category } from '../../categories/types/Category';
 import { validateAmount, validateRequired } from '../../../shared/utils/validators';
+import { parseInputDate } from '../../../shared/utils/dateUtils';
 import { format } from 'date-fns';
 
 interface RecurringFormProps {
@@ -103,8 +104,8 @@ export const RecurringForm = ({
       category,
       description,
       frequency,
-      startDate: new Date(startDate),
-      endDate: endDate ? new Date(endDate) : undefined,
+      startDate: parseInputDate(startDate),
+      endDate: endDate ? parseInputDate(endDate) : undefined,
       isActive,
     });
 

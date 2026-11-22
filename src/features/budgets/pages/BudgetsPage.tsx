@@ -116,6 +116,7 @@ export const BudgetsPage = () => {
       )}
 
       <BudgetForm
+        key={formOpen ? editingBudget?.id ?? 'new' : 'closed'}
         open={formOpen}
         onClose={handleCloseForm}
         onSubmit={handleSubmitForm}

@@ -50,7 +50,7 @@ export const useBudgetTracking = (
         .reduce((sum, t) => sum + t.amount, 0);
 
       const remaining = budget.amount - spent;
-      const percentage = (spent / budget.amount) * 100;
+      const percentage = budget.amount > 0 ? (spent / budget.amount) * 100 : 0;
       const isOverBudget = spent > budget.amount;
 
       return {

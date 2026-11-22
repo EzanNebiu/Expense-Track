@@ -10,7 +10,7 @@ export const useMonthlyStats = (transactions: Transaction[], months: number = 6)
     
     return monthDates.map((monthDate) => {
       const monthStart = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
-      const monthEnd = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0);
+      const monthEnd = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0, 23, 59, 59, 999);
 
       const monthTransactions = transactions.filter(
         (t) => t.date >= monthStart && t.date <= monthEnd

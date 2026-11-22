@@ -10,6 +10,13 @@ import {
   isWithinInterval,
 } from 'date-fns';
 
+// Parse a 'yyyy-MM-dd' value from <input type="date"> as a LOCAL date.
+// `new Date('2026-01-31')` is UTC midnight, which shows as the previous day in timezones west of UTC.
+export const parseInputDate = (value: string): Date => {
+  const [year, month, day] = value.split('-').map(Number);
+  return new Date(year, month - 1, day);
+};
+
 export const formatDate = (date: Date, formatStr: string = 'MMM dd, yyyy'): string => {
   return format(date, formatStr);
 };

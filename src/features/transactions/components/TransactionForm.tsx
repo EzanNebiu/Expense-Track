@@ -21,6 +21,7 @@ import type { Transaction } from '../types/Transaction';
 import type { TransactionType } from '../types/TransactionType';
 import type { Category } from '../../categories/types/Category';
 import { validateAmount, validateRequired } from '../../../shared/utils/validators';
+import { parseInputDate } from '../../../shared/utils/dateUtils';
 import { format } from 'date-fns';
 
 interface TransactionFormProps {
@@ -106,7 +107,7 @@ export const TransactionForm = ({
       amount: parseFloat(amount),
       category,
       description,
-      date: new Date(date),
+      date: parseInputDate(date),
     });
 
     handleClose();

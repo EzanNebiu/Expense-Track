@@ -117,6 +117,7 @@ export const CategoriesPage = () => {
       )}
 
       <CategoryForm
+        key={formOpen ? editingCategory?.id ?? 'new' : 'closed'}
         open={formOpen}
         onClose={handleCloseForm}
         onSubmit={handleSubmitForm}

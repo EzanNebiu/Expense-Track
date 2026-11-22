@@ -17,6 +17,7 @@ import type { Budget } from '../types/Budget';
 import type { BudgetPeriod } from '../types/BudgetPeriod';
 import type { Category } from '../../categories/types/Category';
 import { validateAmount, validateRequired } from '../../../shared/utils/validators';
+import { parseInputDate } from '../../../shared/utils/dateUtils';
 import { format } from 'date-fns';
 
 interface BudgetFormProps {
@@ -80,7 +81,7 @@ export const BudgetForm = ({
       categoryId,
       amount: parseFloat(amount),
       period,
-      startDate: new Date(startDate),
+      startDate: parseInputDate(startDate),
     });
 
     handleClose();

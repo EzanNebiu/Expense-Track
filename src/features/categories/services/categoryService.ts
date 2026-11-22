@@ -28,6 +28,9 @@ export const categoryService = {
 
   async createBatch(categories: Omit<Category, 'id'>[]): Promise<void> {
     const existing = this.getAllCategories();
+    // Avoid seeding twice (e.g. two components mounting at once)
+    const userIds = new Set(categories.map(c => c.userId));
+    if (existing.some(c => userIds.has(c.userId))) return;
     const newCategories = categories.map(cat => ({
       ...cat,
       id: crypto.randomUUID(),
@@ -41,8 +44,22 @@ export const categoryService = {
     const index = categories.findIndex(cat => cat.id === id);
     
     if (index !== -1) {
+      const oldName = categories[index].name;
+      const { userId } = categories[index];
       categories[index] = { ...categories[index], ...data };
       this.saveCategories(categories);
+
+      // Transactions and recurring items reference categories by name, so carry the rename over
+      if (data.name && data.name !== oldName) {
+        for (const key of ['expense_tracker_transactions', 'expense_tracker_recurring']) {
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
+          const items: { userId: string; category: string }[] = JSON.parse(raw);
+          localStorage.setItem(key, JSON.stringify(items.map(item =>
+            item.userId === userId && item.category === oldName ? { ...item, category: data.name } : item
+          )));
+        }
+      }
     }
   },
 

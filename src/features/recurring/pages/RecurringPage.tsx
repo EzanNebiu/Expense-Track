@@ -114,6 +114,7 @@ export const RecurringPage = () => {
       )}
 
       <RecurringForm
+        key={formOpen ? editingRecurring?.id ?? 'new' : 'closed'}
         open={formOpen}
         onClose={handleCloseForm}
         onSubmit={handleSubmitForm}
