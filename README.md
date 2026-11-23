@@ -2,16 +2,18 @@
 
 A modern, mobile-first personal finance application built with React, TypeScript, and Material UI. Track your income and expenses, visualize spending patterns, set budgets, and gain insights into your financial health.
 
+![Expense Tracker screenshot](docs/screenshot.webp)
+
 ## ✨ Features
 
-- **Authentication** - Secure user authentication with local storage
+- **Local-first** - Runs fully in the browser; data is saved in localStorage, no server or sign-up needed
 - **Transaction Management** - Full CRUD operations for income and expenses
 - **Categories** - Organize transactions with customizable categories
 - **Dashboard** - Visual overview of your financial health with charts
 - **Budgets** - Set spending limits and track progress
 - **Recurring Transactions** - Automate regular income/expenses
 - **Filtering & Search** - Find transactions quickly
-- **Dark Mode** - Switch between light and dark themes
+- **Dark Mode** - Toggle between light and dark themes
 - **Mobile Responsive** - Optimized for all screen sizes with dedicated mobile navigation
 
 ## 🛠️ Tech Stack
@@ -27,7 +29,7 @@ A modern, mobile-first personal finance application built with React, TypeScript
 - **date-fns** - Date manipulation
 
 ### Storage
-- **LocalStorage** - Browser-based data persistence (for development)
+- **LocalStorage** - All data stays in the browser
 
 ## 🚀 Getting Started
 
@@ -91,16 +93,16 @@ View your financial summary with interactive charts showing income vs expenses, 
 ## 🎨 Design Features
 
 - **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
-- **Dark Mode** - Automatic theme switching with persistence
+- **Dark Mode** - Light/dark toggle, remembered between visits
 - **Material Design** - Clean, modern UI following Material Design principles
 - **Accessibility** - ARIA labels and keyboard navigation support
 
 ## 📝 License
 
-MIT License
+MIT License, see [LICENSE](LICENSE).
 
 ## 👨‍💻 Author
-- **Created by Ezan M. Nebija**
+- **Created by Ezan M. Nebija** - [ezannebija.dev](https://ezannebija.dev)
 
 ---
 
